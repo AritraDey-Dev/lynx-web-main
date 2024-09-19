@@ -1,0 +1,17 @@
+version: '3'
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4433:80"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - ./src/env/.env
+    volumes:
+        - .:/app
+        - /app/node_modules
+        - /app/build
+    restart: always
